@@ -1,0 +1,24 @@
+import { Router } from "express";
+import {
+  createUser,
+  deleteUser,
+  listUsers,
+  updateMe,
+  updateUser,
+} from "../controllers/users.js";
+import { requireAuth } from "../middlewares/requireAuth.js";
+import { requireRole } from "../middlewares/requireRole.js";
+
+const router = Router();
+
+// Any authenticated user can update their own profile (name + password).
+// NOTE: must be registered before `/:id` so "me" isn't parsed as an ObjectId.
+router.patch("/me", requireAuth, updateMe);
+
+// Admin-only: list users (e.g. for department assignment) and create users — no public registration endpoint
+router.get("/", requireAuth, requireRole("admin"), listUsers);
+router.post("/", requireAuth, requireRole("admin"), createUser);
+router.patch("/:id", requireAuth, requireRole("admin"), updateUser);
+router.delete("/:id", requireAuth, requireRole("admin"), deleteUser);
+
+export default router;
