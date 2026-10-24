@@ -16,14 +16,15 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^3.0.0",
-    "@types/node": "^22.15.0",
     "@types/bun": "latest",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
+    "@types/node": "^22.15.0",
     "@vercel/node": "^5.10.1",
+    "inngest-cli": "^1.49.0",
     "nodemon": "^3.1.14"
   },
   "overrides": {
@@ -36,7 +37,11 @@
     "seed": "bun src/seed.ts",
     "typecheck": "tsc --noEmit",
     "build": "tsc --project tsconfig.build.json",
-    "vercel-build": "tsc --project tsconfig.build.json"
+    "vercel-build": "tsc --project tsconfig.build.json",
+    "inngest": "inngest-cli dev -u http://localhost:5000/api/inngest"
   },
-  "type": "module"
+  "type": "module",
+  "trustedDependencies": [
+    "inngest-cli"
+  ]
 }

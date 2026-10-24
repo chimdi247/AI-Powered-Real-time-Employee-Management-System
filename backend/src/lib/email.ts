@@ -48,7 +48,7 @@ export async function sendEmail(params: SendEmailParams): Promise<void> {
   try {
     const { data, error } = await resendClient.emails.send({
       from: "Resend <onboarding@resend.dev>",
-      to: ["developerspack.team@gmail.com"],
+      to: ["ugoemma247@gmail.com"],
       subject: subject,
       html: html,
     });
@@ -100,7 +100,7 @@ export async function sendBatchEmails(items: BatchEmailItem[]): Promise<void> {
   try {
     const { data, error } = await resendClient.emails.send({
       from: "Resend <onboarding@resend.dev>",
-      to: ["developerspack.team@gmail.com"],
+      to: ["ugoemma247@gmail.com"],
       subject: firstEmail.subject,
       html: firstEmail.html,
     });

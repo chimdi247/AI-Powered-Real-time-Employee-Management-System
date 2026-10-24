@@ -56,7 +56,7 @@ app.use(
   }),
 );
 app.use(cookieParser(process.env.COOKIE_SECRET)); // Parse cookies, incl. signed cookies
-app.use(express.json({ limit: "1mb" })); // Parse JSON request bodies
+app.use(express.json({ limit: "4mb" })); // Parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); // Parse form request bodies
 
 // Root health check — confirms the API is up and running

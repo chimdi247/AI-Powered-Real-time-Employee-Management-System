@@ -128,20 +128,20 @@ function defaultKeyGenerator(req: Request): string {
 
 /** Strict — auth endpoints (e.g. login). 10 requests per 15 minutes. */
 export const strictRateLimit = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 10,
+  windowMs: 45 * 60 * 1000,
+  max: 100,
   message: "Too many login attempts. Please try again later.",
 });
 
 /** Moderate — expensive compute operations (e.g. AI insights, reports). 5 requests per minute. */
 export const moderateRateLimit = rateLimit({
-  windowMs: 60 * 1000,
+  windowMs: 45 * 60 * 1000,
   max: 5,
   message: "Too many requests to this resource. Please wait before trying again.",
 });
 
 /** Standard — general API endpoints. 100 requests per 15 minutes. */
 export const standardRateLimit = rateLimit({
-  windowMs: 15 * 60 * 1000,
+  windowMs: 45 * 60 * 1000,
   max: 100,
 });
